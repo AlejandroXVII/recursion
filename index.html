@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function fibsRec(index, total = 0, n = 1, array = []) {
+				if (index === 0) {
+					return array;
+				} else {
+					array.push(total);
+					console.log(array);
+					return fibsRec(index - 1, total + n, total, array);
+				}
+			}
+			function merge(leftArray, rightArray) {
+				let i = 0;
+				let k = 0;
+				array = [];
+				//sort
+				while (array.length < leftArray.length + leftArray.length) {
+					if (
+						((leftArray[i] < rightArray[k]) &
+							(i < leftArray.length)) |
+						((typeof leftArray[i] === "number") &
+							(typeof rightArray[k] !== "number"))
+					) {
+						array.push(leftArray[i]);
+						console.log(leftArray[i]);
+						i++;
+					} else {
+						array.push(rightArray[k]);
+						console.log(rightArray[k]);
+						k++;
+					}
+					console.log("merging:" + array);
+				}
+				console.log(array);
+				//console.log(leftArray + " y " + rightArray);
+				return array;
+			}
+			function mergeSort(array) {
+				if (array.length === 1) {
+					console.log(array);
+					return array;
+				} else {
+					let midpoint = Math.ceil(array.length / 2);
+
+					console.log("p:" + array);
+					let leftArray = mergeSort(array.slice(0, midpoint));
+					let rightArray = mergeSort(
+						array.slice(midpoint, array.length)
+					);
+
+					return merge(leftArray, rightArray);
+				}
+			}
+
+			console.log("Merge sort: " + mergeSort([105, 79, 100, 110]));
+		</script>
+	</body>
+</html>
